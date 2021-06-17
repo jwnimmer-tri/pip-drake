@@ -1,0 +1,14 @@
+# -*- mode: gitattributes; -*-
+# vi: set ft=gitattributes:
+
+*               text=auto
+
+*.bazel         text diff=python linguist-language=starlark
+*.bzl           text diff=python linguist-language=starlark
+*.md            text diff=markdown
+*.py            text diff=python
+
+.gitattributes  text export-ignore
+.gitignore      text export-ignore
+
+.github/**      export-ignore

@@ -1,0 +1,21 @@
+# -*- mode: bazel; -*-
+# vi: set ft=bazel:
+
+workspace(name = "pip_drake")
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+http_archive(
+    name = "drake",
+    sha256 = "0d34b5976094ff1bbf1361acb78c8c6c000d15636ab5e85b82a0096a949bf3db",  # noqa
+    strip_prefix = "drake-0.30.0",
+    urls = [
+        "https://github.com/RobotLocomotion/drake/archive/refs/tags/v0.30.0.tar.gz",  # noqa
+        "https://drake-packages.csail.mit.edu/drake/release/drake-0.30.0-src.tar.gz",  # noqa
+        "https://s3.amazonaws.com/drake-packages/drake/release/drake-0.30.0-src.tar.gz",  # noqa
+    ],
+)
+
+load("@drake//tools/workspace:default.bzl", "add_default_workspace")
+
+add_default_workspace()

@@ -1,0 +1,11 @@
+# -*- mode: gitignore; -*-
+# vi: set ft=gitignore:
+
+/.idea/
+/.ijwb/
+/.venv/
+/.vscode/
+/*.egg-info/
+/bazel-*
+/build/
+/dist/

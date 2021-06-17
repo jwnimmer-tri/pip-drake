@@ -1,0 +1,15 @@
+# -*- mode: toml; -*-
+# vi: set ft=toml:
+
+[build-system]
+# A list of strings representing PEP 508 dependencies required to execute the
+# build system.
+requires = [
+  "setuptools >= 40.9.0",
+  "wheel",
+]
+
+# A string naming a Python object that will be used to perform the build. This
+# is formatted following the same module:object syntax as a setuptools entry
+# point.
+build-backend = "setuptools.build_meta"

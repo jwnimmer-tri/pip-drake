@@ -1,0 +1,6 @@
+# -*- mode: gitignore; -*-
+# vi: set ft=gitignore:
+
+*.egg-info
+build
+dist

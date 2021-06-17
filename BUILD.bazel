@@ -1,0 +1,14 @@
+# -*- mode: bazel; -*-
+# vi: set ft=bazel:
+
+load("@drake//tools/install:install.bzl", "install")
+
+exports_files(
+    ["LICENSE"],
+    visibility = ["//visibility:public"],
+)
+
+install(
+    name = "install",
+    deps = ["@drake//:install"],
+)
