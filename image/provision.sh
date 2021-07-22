@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 BAZEL_VERSION=4.1.0
 BAZEL_ROOT=https://github.com/bazelbuild/bazel/releases/download
