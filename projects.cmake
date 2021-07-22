@@ -94,28 +94,10 @@ set(nlopt_url "https://github.com/stevengj/nlopt/archive/v${nlopt_version}/nlopt
 set(SuiteSparse_md5 "a2926c27f8a5285e4a10265cc68bbc18")
 list(APPEND ALL_PROJECTS nlopt)
 
+# clp (TODO)
+list(APPEND ALL_PROJECTS clp)
+
+# ipopt (TODO)
+list(APPEND ALL_PROJECTS ipopt)
+
 # glib2 TODO
-# glew TODO
-
-#[[
-# VTK
-if (fletch_ENABLE_VTK OR fletch_ENABLE_ALL_PACKAGES)
-  set(VTK_SELECT_VERSION 8.2 CACHE STRING "Select the version of VTK to build.")
-  set_property(CACHE VTK_SELECT_VERSION PROPERTY STRINGS 8.0 8.2 9.0)
-endif()
-
-if (VTK_SELECT_VERSION VERSION_EQUAL 9.0)
-  set(VTK_version 9.0.1)
-  set(VTK_md5 "b3ba14d616c3b23583c42cffb585deac")
-elseif (VTK_SELECT_VERSION VERSION_EQUAL 8.2)
-  set(VTK_version 8.2.0)
-  set(VTK_md5 "8af3307da0fc2ef8cafe4a312b821111")
-elseif (VTK_SELECT_VERSION VERSION_EQUAL 8.0)
-  set(VTK_version 8.0.1)
-  set(VTK_md5 "692d09ae8fadc97b59d35cab429b261a")  # v8.0.1
-elseif (fletch_ENABLE_VTK OR fletch_ENABLE_ALL_PACKAGES)
-  message(ERROR "VTK Version ${VTK_SELECT_VERSION} Not Supported")
-endif()
-set(VTK_url "http://www.vtk.org/files/release/${VTK_SELECT_VERSION}/VTK-${VTK_version}.tar.gz")
-list(APPEND ALL_PROJECTS VTK)
-#]]
