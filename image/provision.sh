@@ -7,12 +7,24 @@ ln -s /usr/bin/python3 /usr/bin/python
 
 # Install prerequisites
 apt -y update
-apt -y install \
-    default-jdk python3-pip python3-yaml python3-semantic-version \
-    git cmake ninja-build pkg-config gfortran libgfortran-7-dev \
-    libgl1-mesa-dev libclang-9-dev clang-format-9 yasm wget zip
 
-pip3 install auditwheel
+apt -y install \
+    default-jdk python3-pip \
+    gfortran libgfortran-7-dev \
+    libclang-9-dev clang-format-9 \
+    git cmake ninja-build pkg-config \
+    yasm wget zip
+
+apt -y install \
+    libgl1-mesa-dev \
+    opencl-headers ocl-icd-opencl-dev
+
+pip3 install \
+    lxml \
+    pandas \
+    pyyaml \
+    semantic-version \
+    auditwheel
 
 # Install bazel
 cd /tmp

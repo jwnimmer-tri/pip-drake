@@ -25,3 +25,16 @@ ADD image/build-vtk.sh /image/
 ADD image/vtk-args /vtk/
 
 RUN /image/build-vtk.sh
+
+# -----------------------------------------------------------------------------
+# Build the Drake wheel
+# -----------------------------------------------------------------------------
+
+FROM incubator
+
+ADD image/build-wheel.sh /image/
+ADD image/pip-drake.patch /image/
+ADD https://api.github.com/repos/robotlocomotion/drake/git/refs/heads/master \
+    /tmp/drake.sha
+
+RUN /bin/bash /image/build-wheel.sh
