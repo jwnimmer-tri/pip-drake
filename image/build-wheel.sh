@@ -11,9 +11,8 @@ cd /drake
 
 git apply < /image/pip-drake.patch
 
-bazel build \
+bazel run \
     --define NO_CLP=ON \
     --define NO_IPOPT=ON \
     --define NO_DREAL=ON \
-    //...
-bazel shutdown
+    //:install -- /opt/drake

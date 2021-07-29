@@ -13,15 +13,13 @@ apt -y install \
     gfortran libgfortran-7-dev \
     libclang-9-dev clang-format-9 \
     git cmake ninja-build pkg-config \
-    yasm wget zip
+    yasm patchelf wget zip
 
 apt -y install \
     libgl1-mesa-dev \
     opencl-headers ocl-icd-opencl-dev
 
 pip3 install \
-    lxml \
-    pandas \
     pyyaml \
     semantic-version \
     auditwheel
