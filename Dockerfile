@@ -15,9 +15,10 @@ RUN /image/provision.sh
 
 FROM base AS incubator
 
+ENV REPO=https://api.github.com/repos/robotlocomotion/pip-drake-dependencies
+
 ADD image/build-dependencies.sh /image/
-ADD https://api.github.com/repos/robotlocomotion/pip-drake-dependencies/git/refs/heads/master \
-    /tmp/drake-dependencies.sha
+ADD ${REPO}/git/refs/heads/master /tmp/drake-dependencies.sha
 
 RUN /image/build-dependencies.sh
 
@@ -32,9 +33,10 @@ RUN /image/build-vtk.sh
 
 FROM incubator
 
+ENV REPO=https://api.github.com/repos/robotlocomotion/drake
+
 ADD image/build-wheel.sh /image/
 ADD image/pip-drake.patch /image/
-ADD https://api.github.com/repos/robotlocomotion/drake/git/refs/heads/master \
-    /tmp/drake.sha
+ADD ${REPO}/git/refs/heads/master /tmp/drake.sha
 
 RUN /bin/bash /image/build-wheel.sh
