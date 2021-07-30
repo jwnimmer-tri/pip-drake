@@ -1,3 +1,6 @@
 import setuptools
 
-setuptools.setup()
+
+setup(
+    packages=find_packages(),
+)
