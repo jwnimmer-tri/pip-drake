@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# This shell script and the accompanying Dockerfile and patch files are used by
+# the project maintainers to create the precompiled pypi wheels.
+
+# Ensure you have docker(1) installed (apt-get install docker.io).
+
+set -euxo pipefail
+
+rm -f drakewhl-*-x86_64.tar.gz
+
+docker build --tag drakewhl-bionic "${BASH_SOURCE%/*}"
+trap 'docker rmi drakewhl-bionic' EXIT
+docker run --detach --name drakewhl-bionic-build --tty drakewhl-bionic
+trap 'docker rm --force drakewhl-bionic-build && docker rmi drakewhl-bionic' EXIT
+docker cp drakewhl-bionic-build:$(docker exec drakewhl-bionic-build \
+  find /opt -maxdepth 1 -name 'drakewhl-*.tar.gz') .
