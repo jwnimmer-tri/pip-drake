@@ -6,17 +6,19 @@ BAZEL_ROOT=https://github.com/bazelbuild/bazel/releases/download
 ln -s /usr/bin/python3 /usr/bin/python
 
 # Install prerequisites
-apt -y update
+apt-get -y update
 
-apt -y install \
-    default-jdk python3-pip \
-    gfortran libgfortran-7-dev \
+apt-get -y install --no-install-recommends \
+    default-jdk \
+    python3-dev libpython3-dev python3-pip \
+    gcc g++ gfortran libgfortran-7-dev \
     libclang-9-dev clang-format-9 \
     git cmake ninja-build pkg-config \
-    yasm patchelf wget zip
+    yasm patchelf file wget unzip zip
 
-apt -y install \
-    libgl1-mesa-dev \
+apt-get -y install --no-install-recommends \
+    libglib2.0-dev \
+    libgl1-mesa-dev libxt-dev \
     opencl-headers ocl-icd-opencl-dev
 
 pip3 install \
