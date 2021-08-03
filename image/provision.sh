@@ -6,16 +6,16 @@ BAZEL_ROOT=https://github.com/bazelbuild/bazel/releases/download
 ln -s /usr/bin/python3 /usr/bin/python
 
 # Install prerequisites
-apt -y update
+apt-get -y update
 
-apt -y install \
+apt-get -y install --no-install-recommends \
     default-jdk python3-pip \
-    gfortran libgfortran-7-dev \
+    gcc g++ gfortran libgfortran-7-dev \
     libclang-9-dev clang-format-9 \
     git cmake ninja-build pkg-config \
     yasm patchelf wget zip
 
-apt -y install \
+apt-get -y install --no-install-recommends \
     libgl1-mesa-dev \
     opencl-headers ocl-icd-opencl-dev
 
@@ -25,6 +25,8 @@ pip3 install \
     auditwheel
 
 # Install bazel
+apt-get -y install --no-install-recommends \
+    unzip
 cd /tmp
 wget ${BAZEL_ROOT}/${BAZEL_VERSION}/bazel-${BAZEL_VERSION}-installer-linux-x86_64.sh
 bash /tmp/bazel-${BAZEL_VERSION}-installer-linux-x86_64.sh

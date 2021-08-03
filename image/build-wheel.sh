@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 # FIXME
-apt install -y libglib2.0-dev
+apt-get -y install --no-install-recommends libglib2.0-dev
 
 cd /
 
