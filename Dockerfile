@@ -15,10 +15,8 @@ RUN /image/provision.sh
 
 FROM base AS incubator
 
-ENV REPO=https://api.github.com/repos/robotlocomotion/pip-drake-dependencies
-
+ADD image/dependencies/ /dependencies/src/
 ADD image/build-dependencies.sh /image/
-ADD ${REPO}/git/refs/heads/master /tmp/drake-dependencies.sha
 
 RUN /image/build-dependencies.sh
 

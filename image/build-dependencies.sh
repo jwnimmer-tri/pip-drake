@@ -1,16 +1,11 @@
 #!/bin/bash -e
 
-mkdir -p /drake-dependencies
-cd /drake-dependencies
-
-git clone https://github.com/RobotLocomotion/pip-drake-dependencies.git src
-
-mkdir -p /drake-dependencies/build
-cd /drake-dependencies/build
+mkdir -p /dependencies/build
+cd /dependencies/build
 
 cmake -G Ninja \
   -DCMAKE_INSTALL_PREFIX=/opt/drake-dependencies \
-  /drake-dependencies/src
+  /dependencies/src
 
 ninja
 
