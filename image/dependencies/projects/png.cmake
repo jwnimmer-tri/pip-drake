@@ -6,6 +6,7 @@ ExternalProject_Add(png
     ${COMMON_CMAKE_EP_ARGS}
     CMAKE_ARGS
         ${COMMON_CMAKE_ARGS}
+        -DPNG_SHARED:BOOL=OFF
         -DZLIB_INCLUDE_DIR:PATH=${CMAKE_INSTALL_PREFIX}/include
         -DZLIB_LIBRARY:PATH=${CMAKE_INSTALL_PREFIX}/lib/libz.a
     )

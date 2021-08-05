@@ -10,6 +10,7 @@ ExternalProject_Add(libjpeg-turbo
     BUILD_IN_SOURCE 1
     CONFIGURE_COMMAND ./configure
         --prefix=${CMAKE_INSTALL_PREFIX}
+        --disable-shared
         ${_libjpeg-turbo_ARGS_APPLE}
         NASM=yasm
         CFLAGS=-fPIC

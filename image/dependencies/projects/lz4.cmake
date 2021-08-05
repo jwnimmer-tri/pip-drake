@@ -4,6 +4,11 @@ ExternalProject_Add(lz4
     ${COMMON_EP_ARGS}
     BUILD_IN_SOURCE 1
     CONFIGURE_COMMAND ""
-    BUILD_COMMAND make "CFLAGS=-fPIC -O3"
-    INSTALL_COMMAND make PREFIX=${CMAKE_INSTALL_PREFIX} install
+    BUILD_COMMAND make
+        BUILD_SHARED=no
+        "CFLAGS=-fPIC -O3"
+    INSTALL_COMMAND make
+        BUILD_SHARED=no
+        PREFIX=${CMAKE_INSTALL_PREFIX}
+        install
     )
