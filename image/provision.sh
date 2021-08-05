@@ -24,6 +24,8 @@ apt-get -y install --no-install-recommends \
 pip3 install \
     pyyaml \
     semantic-version \
+    setuptools \
+    wheel \
     auditwheel
 
 # Install bazel

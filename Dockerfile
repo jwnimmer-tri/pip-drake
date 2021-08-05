@@ -37,4 +37,9 @@ ADD image/build-drake.sh /image/
 ADD image/pip-drake.patch /image/
 ADD ${REPO}/git/refs/heads/master /tmp/drake.sha
 
-RUN /bin/bash /image/build-drake.sh
+RUN /image/build-drake.sh
+
+ADD image/build-wheel.sh /image/
+ADD image/setup.py /wheel/
+
+RUN /image/build-wheel.sh
