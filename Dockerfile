@@ -33,8 +33,8 @@ FROM incubator
 
 ENV REPO=https://api.github.com/repos/robotlocomotion/drake
 
-ADD image/build-wheel.sh /image/
+ADD image/build-drake.sh /image/
 ADD image/pip-drake.patch /image/
 ADD ${REPO}/git/refs/heads/master /tmp/drake.sha
 
-RUN /bin/bash /image/build-wheel.sh
+RUN /bin/bash /image/build-drake.sh
