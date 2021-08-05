@@ -6,4 +6,8 @@ ExternalProject_Add(zlib
     ${COMMON_CMAKE_EP_ARGS}
     CMAKE_ARGS
         ${COMMON_CMAKE_ARGS}
+    PATCH_COMMAND ${CMAKE_COMMAND}
+        -Dzlib_patch=${CMAKE_SOURCE_DIR}/patches/zlib
+        -Dzlib_source=${CMAKE_BINARY_DIR}/src/zlib
+        -P ${CMAKE_SOURCE_DIR}/patches/zlib/patch.cmake
 )
