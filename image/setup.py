@@ -41,6 +41,7 @@ manipulation = [
 ]
 
 # Required python packages that will be pip installed along with pydrake
+# TODO Can we remove any of these?
 python_required = [
   "matplotlib",
   "meshcat",
@@ -90,10 +91,11 @@ heavy emphasis on optimization-based design/analysis.'''.strip(),
         'Topic :: Scientific/Engineering',
         'Topic :: Software Development :: Libraries :: Python Modules'],
       distclass=BinaryDistribution,
+      # TODO Check this: do we need to add third-party licenses?
       license='BSD 3-Clause License',
       platforms=['linux_x86_64'],
       packages=find_packages(),
-      # Add in any packaged data.
+      # Add in any packaged data
       include_package_data=True,
       package_data={
         'pydrake': ['../.drake-find_resource-sentinel'] + docs + examples +
