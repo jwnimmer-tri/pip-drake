@@ -1,7 +1,18 @@
 #!/bin/bash -e
 
+chrpath()
+{
+    rpath=$1
+    shift 1
+
+    for lib in "$@"; do
+        patchelf --remove-rpath "$lib"
+        patchelf --set-rpath "$rpath" "$lib"
+    done
+}
+
 # TODO most of this should move to bazel
-mkdir -p wheel/pydrake/lib
+mkdir -p /wheel/pydrake/lib
 cd /wheel
 
 cp -r -t /wheel/pydrake \
@@ -15,6 +26,9 @@ cp -r -t /wheel/pydrake/lib \
     /opt/drake/lib/libdrake*.so
 
 export LD_LIBRARY_PATH=/wheel/pydrake/lib
+
+chrpath '$ORIGIN/lib' pydrake/*.so
+chrpath '$ORIGIN/../lib' pydrake/*/*.so
 
 python setup.py bdist_wheel
 
