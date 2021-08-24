@@ -9,12 +9,12 @@ ln -s /usr/bin/python3 /usr/bin/python
 apt-get -y update
 
 apt-get -y install --no-install-recommends \
-    default-jdk \
+    autoconf automake default-jdk \
     python3-dev libpython3-dev python3-pip \
     gcc g++ gfortran libgfortran-7-dev \
     libclang-9-dev clang-format-9 \
     git cmake ninja-build pkg-config \
-    yasm patchelf file wget unzip zip
+    yasm file wget unzip zip
 
 apt-get -y install --no-install-recommends \
     libglib2.0-dev \

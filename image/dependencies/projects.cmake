@@ -1,3 +1,9 @@
+# patchelf
+set(patchelf_version 0.12)
+set(patchelf_url "https://github.com/NixOS/patchelf/archive/${patchelf_version}/patchelf-${patchelf_version}.tar.gz")
+set(patchelf_md5 "b9d1161e52e2f342598deabf7d85ed24")
+list(APPEND ALL_PROJECTS patchelf)
+
 # zlib
 set(zlib_version 1.2.11)
 set(zlib_url "https://github.com/madler/zlib/archive/v${zlib_version}.zip")
