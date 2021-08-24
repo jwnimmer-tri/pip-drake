@@ -56,6 +56,12 @@ set(yaml-cpp_md5 "8adc0ae6c2698a61ab086606cc7cf562")
 set(yaml-cpp_dlname "yaml-cpp-${yaml-cpp_version}.tar.gz")
 list(APPEND ALL_PROJECTS yaml-cpp)
 
+# msgpack
+set(msgpack_version 3.1.0)
+set(msgpack_url "https://github.com/msgpack/msgpack-c/releases/download/cpp-${msgpack_version}/msgpack-${msgpack_version}.tar.gz")
+set(msgpack_md5 "57bdba5ae83831c7c04aad39e479b225")
+list(APPEND ALL_PROJECTS msgpack)
+
 # gflags
 set(gflags_version 2.2.1)
 set(gflags_url "https://github.com/gflags/gflags/archive/v${gflags_version}.tar.gz")
