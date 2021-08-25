@@ -23,7 +23,7 @@ build()
 extract()
 {
     docker run --rm $1 \
-        bash -c 'tar -cf - /wheel/dist/*.whl' | \
+        bash -c 'tar -cf - /wheel/wheelhouse/*.whl' | \
         tar --strip-components=2 -xf -
 }
 

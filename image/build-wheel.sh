@@ -32,5 +32,6 @@ chrpath '$ORIGIN/../lib' pydrake/*/*.so
 
 python setup.py bdist_wheel
 
-# FIXME
-# auditwheel repair dist/pydrake*.whl
+GLIBC_VERSION=$(ldd --version | sed -n '1{s/.* //;s/[.]/_/p}')
+
+auditwheel repair --plat manylinux_${GLIBC_VERSION}_x86_64 dist/drake*.whl
