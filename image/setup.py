@@ -1,4 +1,5 @@
 import glob
+import os
 import setuptools
 from setuptools import setup, find_packages
 from setuptools.dist import Distribution
@@ -62,7 +63,32 @@ class BinaryDistribution(Distribution):
         return True
 
 
-setup(name='pydrake',
+def make_alias(name):
+    if name is None:
+        f = '__init__.py'
+        i = 'pydrake'
+    else:
+        f = f'{name}.py'
+        i = f'pydrake.{name}'
+
+    with open(os.path.join('drake', f), 'w') as m:
+        m.write(f'from {i} import *\n')
+
+
+os.makedirs('drake', exist_ok=True)
+
+make_alias(None)
+make_alias('all')
+make_alias('common')
+make_alias('examples')
+make_alias('forwarddiff')
+make_alias('manipulation')
+make_alias('multibody')
+make_alias('solvers')
+make_alias('systems')
+make_alias('visualization')
+
+setup(name='drake',
       version=DRAKE_VERSION,
       description='Model-based design and verification for robotics',
       long_description='''
@@ -104,7 +130,7 @@ heavy emphasis on optimization-based design/analysis.'''.strip(),
       python_requires='>=3.6',
       install_requires=python_required,
       ext_modules=[
-           setuptools.Extension(name='pydrake',
+           setuptools.Extension(name='drake',
                                 sources=[])],
       zip_safe=False
       )
