@@ -15,42 +15,16 @@ DRAKE_VERSION = '0.32.0'
 #      - lib/
 #      - manipulation/
 
-pydrake_lib = [
-    '../' + f
-    for f in glob.iglob("pydrake" + '**/**', recursive=True)
-    if '.so' in f
-]
-
-docs = [
-    '../' + f
-    for f in glob.iglob("pydrake/doc" + '**/**', recursive=True)
-]
-
-examples = [
-    '../' + f
-    for f in glob.iglob("pydrake/examples" + '**/**', recursive=True)
-]
-
-lib = [
-    '../' + f
-    for f in glob.iglob("pydrake/lib" + '**/**', recursive=True)
-]
-
-manipulation = [
-    '../' + f
-    for f in glob.iglob("pydrake/manipulation" + '**/**', recursive=True)
-]
-
 # Required python packages that will be pip installed along with pydrake
 # TODO Can we remove any of these?
 python_required = [
-  "matplotlib",
-  "meshcat",
-  "numpy",
-  "pydot",
-  "pygame",
-  "PyYAML",
-  "scipy"
+    'matplotlib',
+    'meshcat',
+    'numpy',
+    'pydot',
+    'pygame',
+    'PyYAML',
+    'scipy',
 ]
 
 
@@ -61,6 +35,10 @@ class BinaryDistribution(Distribution):
 
     def has_ext_modules(self):
         return True
+
+
+def find_data_files(pattern):
+    return [f'../{f}' for f in glob.iglob(pattern, recursive=True)]
 
 
 def make_alias(name):
@@ -124,8 +102,12 @@ heavy emphasis on optimization-based design/analysis.'''.strip(),
       # Add in any packaged data
       include_package_data=True,
       package_data={
-        'pydrake': ['../.drake-find_resource-sentinel'] + docs + examples +
-        lib + manipulation + pydrake_lib
+          '': ['.drake-find_resource-sentinel'] +
+          find_data_files('pydrake/**/*.so') +
+          find_data_files('pydrake/lib/**') +
+          find_data_files('pydrake/doc/**') +
+          find_data_files('pydrake/examples/**') +
+          find_data_files('pydrake/manipulation/**')
       },
       python_requires='>=3.6',
       install_requires=python_required,
