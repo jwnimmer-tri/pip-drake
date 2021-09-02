@@ -1,13 +1,22 @@
+ARG PLATFORM=ubuntu:18.04
+
 # -----------------------------------------------------------------------------
 # Create a base provisioned image
 # -----------------------------------------------------------------------------
 
-FROM ubuntu:18.04 AS base
+FROM ${PLATFORM} AS base
 
-ADD image/provision.sh /image/
+ARG PYTHON=3
 
 ENV DEBIAN_FRONTEND=noninteractive
-RUN /image/provision.sh
+
+ADD image/provision-base.sh /image/
+
+RUN /image/provision-base.sh
+
+ADD image/provision-python.sh /image/
+
+RUN /image/provision-python.sh ${PYTHON}
 
 # -----------------------------------------------------------------------------
 # Build Drake's dependencies
