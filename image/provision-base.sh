@@ -7,7 +7,9 @@ BAZEL_ROOT=https://github.com/bazelbuild/bazel/releases/download
 apt-get -y update
 
 apt-get -y install --no-install-recommends \
-    autoconf automake default-jdk \
+    default-jdk \
+    autoconf automake \
+    libtool libltdl-dev \
     gcc g++ gfortran libgfortran-7-dev \
     libclang-9-dev clang-format-9 \
     git cmake ninja-build pkg-config \

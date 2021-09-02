@@ -25,7 +25,7 @@ cp -r -t /wheel/pydrake \
 cp -r -t /wheel/pydrake/lib \
     /opt/drake/lib/libdrake*.so
 
-export LD_LIBRARY_PATH=/wheel/pydrake/lib
+export LD_LIBRARY_PATH=/wheel/pydrake/lib:/opt/drake-dependencies/lib
 
 chrpath '$ORIGIN/lib' pydrake/*.so
 chrpath '$ORIGIN/../lib' pydrake/*/*.so
