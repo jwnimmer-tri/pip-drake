@@ -2,7 +2,7 @@
 
 cd /
 
-git clone https://github.com/robotlocomotion/drake
+git clone https://github.com/RobotLocomotion/drake
 
 cd /drake
 
