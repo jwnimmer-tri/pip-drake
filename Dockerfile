@@ -7,7 +7,10 @@ FROM ubuntu:18.04 AS base
 ADD image/provision.sh /image/
 
 ENV DEBIAN_FRONTEND=noninteractive
-RUN /image/provision.sh
+RUN \
+  --mount=type=cache,target=/var/cache/apt \
+  --mount=type=cache,target=/var/lib/apt \
+  /image/provision.sh
 
 # -----------------------------------------------------------------------------
 # Build Drake's dependencies

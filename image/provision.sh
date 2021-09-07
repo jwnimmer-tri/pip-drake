@@ -3,6 +3,11 @@
 BAZEL_VERSION=4.2.1
 BAZEL_ROOT=https://github.com/bazelbuild/bazel/releases/download
 
+# Re-use the download cache across runs, per
+# https://github.com/moby/buildkit/blob/v0.9.0/frontend/dockerfile/docs/syntax.md#example-cache-apt-packages
+rm -f /etc/apt/apt.conf.d/docker-clean
+echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/keep-cache
+
 ln -s /usr/bin/python3 /usr/bin/python
 
 # Install prerequisites
