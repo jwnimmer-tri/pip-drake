@@ -29,6 +29,13 @@ extract()
 
 ###############################################################################
 
-# Build wheel
-build $id
-extract $id
+# Build wheels
+build ${id}-py36 --build-arg PYTHON=3.6 --build-arg PLATFORM=ubuntu:18.04
+extract ${id}-py36
+
+build ${id}-py37 --build-arg PYTHON=3.7 --build-arg PLATFORM=ubuntu:18.04
+extract ${id}-py37
+
+# TODO(mwoehlke-kitware) VTK needs a patch to build against Python 3.8
+# build ${id}-py38 --build-arg PYTHON=3.8 --build-arg PLATFORM=ubuntu:18.04
+# extract ${id}-py38
