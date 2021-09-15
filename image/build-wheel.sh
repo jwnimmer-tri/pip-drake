@@ -25,6 +25,9 @@ cp -r -t /wheel/pydrake \
 cp -r -t /wheel/pydrake/lib \
     /opt/drake/lib/libdrake*.so
 
+rm /wheel/pydrake/examples/kuka_iiwa_arm/kuka_plan_runner
+rm /wheel/pydrake/examples/kuka_iiwa_arm/kuka_simulation
+
 export LD_LIBRARY_PATH=/wheel/pydrake/lib:/opt/drake-dependencies/lib
 
 chrpath '$ORIGIN/lib' pydrake/*.so
