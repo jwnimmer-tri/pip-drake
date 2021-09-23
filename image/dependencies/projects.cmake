@@ -106,12 +106,6 @@ set(suitesparse_url "http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-$
 set(SuiteSparse_md5 "a2926c27f8a5285e4a10265cc68bbc18")
 list(APPEND ALL_PROJECTS suitesparse)
 
-# nlopt
-set(nlopt_version 2.6.2)
-set(nlopt_url "https://github.com/stevengj/nlopt/archive/v${nlopt_version}/nlopt-${nlopt_version}.tar.gz")
-set(nlopt_md5 "0163425f2ad26288391ce8f6a1fc418f")
-list(APPEND ALL_PROJECTS nlopt)
-
 # clp (TODO)
 list(APPEND ALL_PROJECTS clp)
 

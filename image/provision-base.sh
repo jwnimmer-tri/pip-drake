@@ -16,7 +16,7 @@ apt-get -y install --no-install-recommends \
     yasm file wget unzip zip
 
 apt-get -y install --no-install-recommends \
-    libglib2.0-dev \
+    libglib2.0-dev libnlopt-dev \
     libgl1-mesa-dev libxt-dev \
     opencl-headers ocl-icd-opencl-dev
 
