@@ -7,3 +7,11 @@ ExternalProject_Add(eigen
     CMAKE_ARGS
         ${COMMON_CMAKE_ARGS}
 )
+
+# Note: Drake uses -DEIGEN_MPL2_ONLY, so we don't need the [L]GPL licenses.
+extract_license(eigen
+    COPYING.BSD
+    COPYING.MINPACK
+    COPYING.MPL2
+    COPYING.README
+)

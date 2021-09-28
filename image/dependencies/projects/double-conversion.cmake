@@ -6,3 +6,9 @@ ExternalProject_Add(double-conversion
     CMAKE_ARGS
         ${COMMON_CMAKE_ARGS}
     )
+
+# Note: double-conversion ships both a COPYING and a LICENSE, but they are
+# identical, so there is no need for us to ship both.
+extract_license(double-conversion
+    COPYING
+)

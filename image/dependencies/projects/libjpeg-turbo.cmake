@@ -18,3 +18,7 @@ ExternalProject_Add(libjpeg-turbo
     BUILD_COMMAND make
     INSTALL_COMMAND make install
     )
+
+extract_license(libjpeg-turbo
+    README
+)

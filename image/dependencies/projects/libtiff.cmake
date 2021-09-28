@@ -14,3 +14,7 @@ ExternalProject_Add(libtiff
         -DZLIB_LIBRARY_DEBUG=${CMAKE_INSTALL_PREFIX}/lib/libz.a
         -DZLIB_LIBRARY_RELEASE=${CMAKE_INSTALL_PREFIX}/lib/libz.a
         )
+
+extract_license(libtiff
+    COPYRIGHT
+)

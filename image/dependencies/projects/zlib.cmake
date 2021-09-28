@@ -11,3 +11,6 @@ ExternalProject_Add(zlib
         -Dzlib_source=${CMAKE_BINARY_DIR}/src/zlib
         -P ${CMAKE_SOURCE_DIR}/patches/zlib/patch.cmake
 )
+
+# Note: the zlib license does not require the license notice to be included in
+# non-source distributions.

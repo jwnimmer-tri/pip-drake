@@ -7,3 +7,7 @@ ExternalProject_Add(gflags
     CMAKE_ARGS
         ${COMMON_CMAKE_ARGS}
     )
+
+extract_license(gflags
+    COPYING.txt
+)

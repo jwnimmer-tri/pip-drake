@@ -8,3 +8,7 @@ ExternalProject_Add(lapack
         ${COMMON_CMAKE_ARGS}
         -DCBLAS=ON
 )
+
+extract_license(lapack
+    LICENSE
+)

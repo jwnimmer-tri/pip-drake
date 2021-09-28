@@ -31,6 +31,22 @@ set (COMMON_CMAKE_ARGS
     -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_INSTALL_PREFIX}
     )
 
+function(extract_license PROJECT)
+    set(command "")
+    foreach(file IN LISTS ARGN)
+        list(APPEND command
+            COMMAND ${CMAKE_COMMAND} -E copy
+            ${CMAKE_BINARY_DIR}/src/${PROJECT}/${file}
+            ${CMAKE_INSTALL_PREFIX}/licenses/${PROJECT}/${file}
+        )
+    endforeach()
+    ExternalProject_Add_Step(
+        ${PROJECT} CopyLicense
+        ${command}
+        DEPENDEES install
+    )
+endfunction()
+
 set_property(DIRECTORY PROPERTY EP_STEP_TARGETS download)
 foreach(project ${ALL_PROJECTS})
     include(projects/${project}.cmake)

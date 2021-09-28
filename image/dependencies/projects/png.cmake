@@ -10,3 +10,7 @@ ExternalProject_Add(png
         -DZLIB_INCLUDE_DIR:PATH=${CMAKE_INSTALL_PREFIX}/include
         -DZLIB_LIBRARY:PATH=${CMAKE_INSTALL_PREFIX}/lib/libz.a
     )
+
+extract_license(png
+    LICENSE
+)

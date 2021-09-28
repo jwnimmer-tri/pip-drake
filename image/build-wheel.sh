@@ -25,6 +25,9 @@ cp -r -t /wheel/pydrake \
 cp -r -t /wheel/pydrake/lib \
     /opt/drake/lib/libdrake*.so
 
+cp -r -t /wheel/pydrake/doc \
+    /opt/drake-dependencies/licenses/*
+
 rm /wheel/pydrake/examples/kuka_iiwa_arm/kuka_plan_runner
 rm /wheel/pydrake/examples/kuka_iiwa_arm/kuka_simulation
 

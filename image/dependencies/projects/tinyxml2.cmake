@@ -7,3 +7,6 @@ ExternalProject_Add(tinyxml2
   CMAKE_ARGS
     ${COMMON_CMAKE_ARGS}
 )
+
+# Note: tinyxml2 uses the zlib license, which does not require the license
+# notice to be included in non-source distributions.

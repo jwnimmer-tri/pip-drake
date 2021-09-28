@@ -13,3 +13,10 @@ ExternalProject_Add(suitesparse
     BUILD_COMMAND make
     INSTALL_COMMAND make install
     )
+
+# Note: SuiteSparse consists of several "packages" with varying licenses; here,
+# we extract the licenses only for packages Drake actually uses. If the set of
+# used packages changes, this will need to be updated.
+extract_license(suitesparse
+    AMD/Doc/License.txt
+)

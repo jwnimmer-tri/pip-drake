@@ -15,3 +15,8 @@ ExternalProject_Add(libxcrypt
     BUILD_COMMAND make
     INSTALL_COMMAND make install
     )
+
+extract_license(libxcrypt
+    LICENSING
+    COPYING.LIB
+)

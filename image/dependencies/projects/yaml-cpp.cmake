@@ -11,3 +11,7 @@ ExternalProject_Add(yaml-cpp
         -DYAML_CPP_BUILD_TESTS:BOOL=OFF
         -DYAML_CPP_BUILD_TOOLS:BOOL=OFF
 )
+
+extract_license(yaml-cpp
+    LICENSE
+)

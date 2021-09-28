@@ -12,3 +12,6 @@ ExternalProject_Add(patchelf
     BUILD_COMMAND make
     INSTALL_COMMAND make install
     )
+
+# Note: patchelf is only used at build time, so there is no need to extract the
+# license for redistribution.

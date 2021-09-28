@@ -7,3 +7,7 @@ ExternalProject_Add(bzip2
     BUILD_COMMAND make "CFLAGS=-fPIC -O2"
     INSTALL_COMMAND make PREFIX=${CMAKE_INSTALL_PREFIX} install
     )
+
+extract_license(bzip2
+    LICENSE
+)

@@ -6,3 +6,9 @@ ExternalProject_Add(msgpack
     CMAKE_ARGS
         ${COMMON_CMAKE_ARGS}
 )
+
+extract_license(msgpack
+    LICENSE_1_0.txt
+    COPYING
+    NOTICE
+)

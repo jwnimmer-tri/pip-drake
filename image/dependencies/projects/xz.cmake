@@ -11,3 +11,6 @@ ExternalProject_Add(xz
     BUILD_COMMAND make
     INSTALL_COMMAND make install
     )
+
+# Note: Although various utilities are under [L]GPL, we only use liblzma, which
+# is Public Domain.

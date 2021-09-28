@@ -12,3 +12,7 @@ ExternalProject_Add(lz4
         PREFIX=${CMAKE_INSTALL_PREFIX}
         install
     )
+
+extract_license(lz4
+    lib/LICENSE
+)
