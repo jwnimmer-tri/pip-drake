@@ -6,8 +6,8 @@ ExternalProject_Add(libxcrypt
     PATCH_COMMAND ./autogen.sh
     CONFIGURE_COMMAND ./configure
         --prefix=${CMAKE_INSTALL_PREFIX}
+        --disable-static
         --enable-shared
-        --enable-static
         --enable-obsolete-api
         --enable-hashes=all
         CFLAGS=-fPIC
