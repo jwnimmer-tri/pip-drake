@@ -13,14 +13,11 @@ chrpath()
 
 # TODO most of this should move to bazel
 mkdir -p /wheel/pydrake/lib
+mkdir -p /wheel/pydrake/share/drake
 cd /wheel
 
-# TODO we need a different way of shipping non-arch files (examples, models)
 cp -r -t /wheel/pydrake \
     /opt/drake/share/doc \
-    /opt/drake/share/drake/.drake-find_resource-sentinel \
-    /opt/drake/share/drake/examples \
-    /opt/drake/share/drake/manipulation \
     /opt/drake/lib/python*/site-packages/pydrake/*
 
 cp -r -t /wheel/pydrake/lib \
@@ -29,12 +26,18 @@ cp -r -t /wheel/pydrake/lib \
 cp -r -t /wheel/pydrake/doc \
     /opt/drake-dependencies/licenses/*
 
+# TODO we need a different way of shipping non-arch files (examples, models)
+cp -r -t /wheel/pydrake/share/drake \
+    /opt/drake/share/drake/.drake-find_resource-sentinel \
+    /opt/drake/share/drake/examples \
+    /opt/drake/share/drake/manipulation \
+
 # TODO we need to remove these to keep the wheel from being too large, but (per
-# above), the whole trees containing these bits shouldn't be in the wheel
-rm /wheel/pydrake/examples/kuka_iiwa_arm/kuka_plan_runner
-rm /wheel/pydrake/examples/kuka_iiwa_arm/kuka_simulation
-rm /wheel/pydrake/manipulation/models/ycb/meshes/*.png
-rm -r /wheel/pydrake/examples/atlas
+# above), the whole of share/drake shouldn't be in the wheel
+rm /wheel/pydrake/share/drake/examples/kuka_iiwa_arm/kuka_plan_runner
+rm /wheel/pydrake/share/drake/examples/kuka_iiwa_arm/kuka_simulation
+rm /wheel/pydrake/share/drake/manipulation/models/ycb/meshes/*.png
+rm -r /wheel/pydrake/share/drake/examples/atlas
 
 export LD_LIBRARY_PATH=/wheel/pydrake/lib:/opt/drake-dependencies/lib
 

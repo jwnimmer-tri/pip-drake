@@ -1,19 +1,11 @@
-import glob
+# Note: use setuptools.glob rather than the built-in glob; see
+# https://bugs.python.org/issue37578.
 import os
 import setuptools
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages, glob
 from setuptools.dist import Distribution
 
 DRAKE_VERSION = '0.32.0'
-
-# build_wheel/
-#   - setup.py
-#   - pydrake/
-#      - .drake-find_resource-sentinel
-#      - doc/
-#      - examples/
-#      - lib/
-#      - manipulation/
 
 # Required python packages that will be pip installed along with pydrake
 # TODO Can we remove any of these?
@@ -28,7 +20,7 @@ python_required = [
 ]
 
 
-# Distribution which always forces a binary package with platform name
+# Distribution which always forces a binary package with platform name.
 class BinaryDistribution(Distribution):
     def is_pure(self):
         return False
@@ -37,8 +29,11 @@ class BinaryDistribution(Distribution):
         return True
 
 
-def find_data_files(pattern):
-    return [f'../{f}' for f in glob.iglob(pattern, recursive=True)]
+def find_data_files(*patterns):
+    result = []
+    for pattern in patterns:
+        result += [f'../{f}' for f in glob.iglob(pattern, recursive=True)]
+    return result
 
 
 def make_alias(name):
@@ -99,15 +94,15 @@ heavy emphasis on optimization-based design/analysis.'''.strip(),
       license='BSD 3-Clause License',
       platforms=['linux_x86_64'],
       packages=find_packages(),
-      # Add in any packaged data
+      # Add in any packaged data.
       include_package_data=True,
       package_data={
-          '': ['.drake-find_resource-sentinel'] +
-          find_data_files('pydrake/**/*.so') +
-          find_data_files('pydrake/lib/**') +
-          find_data_files('pydrake/doc/**') +
-          find_data_files('pydrake/examples/**') +
-          find_data_files('pydrake/manipulation/**')
+          '': find_data_files(
+              'pydrake/**/*.so',
+              'pydrake/lib/**',
+              'pydrake/doc/**',
+              'pydrake/share/**',
+          )
       },
       python_requires='>=3.6',
       install_requires=python_required,
